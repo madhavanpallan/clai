@@ -41,17 +41,21 @@ class TELLINA(Agent):
             ## tellina endpoint must return a json with
             ## keys "response" and "confidence"
 
-            logger.info("##### In Tellina skill, after call, ogging contents of callback from kube deployed tellina post #####")
+            dummy_high_confidence = 0.9
+
+            logger.info("##### In Tellina skill, after call, logging contents of callback from kube deployed tellina post #####")
             logger.info(endpoint_comeback)
             logger.info("Response: " + endpoint_comeback['response'])
             logger.info("Confidence: " + endpoint_comeback['confidence'])
+            logger.info("Dummy High Confidence: " + str(dummy_high_confidence))
 
             response = endpoint_comeback['response']
-            confidence = endpoint_comeback['confidence']
+            # confidence = float(endpoint_comeback['confidence'])
+            confidence = dummy_high_confidence  # sending a dummy high confidence for test
 
             return Action(
                 suggested_command=NOOP_COMMAND,
-                execute=True,
+                execute=False,
                 description=Colorize().info().append(response).to_console(),
                 confidence=confidence)
 

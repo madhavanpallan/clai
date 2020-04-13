@@ -3,11 +3,24 @@
 `NLP` `Support`
 
 This skill expands on the functionality of the [`nlc2cmd`](https://github.com/IBM/clai/tree/master/clai/server/plugins/nlc2cmd) skill by 
-providing  
+providing a direct interface to the [`NL2Bash`](https://github.com/TellinaTool/nl2bash) system. 
 
 ## Implementation
 
+The natural language input from the user at the command line is sent as a query to an 
+instance of the [`Tellina`](http://tellina.rocks/) system, which runs `NL2Bash` at its 
+translation engine. `NL2Bash` uses `TensorFlow` to create a model of the top `Bash` commands, 
+and translates a user's natural language query into potential `Bash` commands.
+
+### Scoring & Confidence
+
+Coming Soon
+
 ## Example Usage
+
+Coming Soon
+
+### Sample Invocations
 
 ## :star: :star: :star: :star: :star: nlc2cmd Challenge
 
@@ -37,6 +50,7 @@ Contribute [here](https://forms.gle/MXWfGYCtiVDNfNdU8).
 
 ## [xkcd](https://uni.xkcd.com/)
 
-I don't know what's worse--the fact that after 15 years of using tar I still can't keep the flags straight, or that after 15 years of technological advancement I'm still mucking with tar flags that were 15 years old when I started.  
 
-![alt text](https://imgs.xkcd.com/comics/tar.png "I don't know what's worse--the fact that after 15 years of using tar I still can't keep the flags straight, or that after 15 years of technological advancement I'm still mucking with tar flags that were 15 years old when I started.")
+The pile gets soaked with data and starts to get mushy over time, so it's technically recurrent.  
+
+![alt text](https://imgs.xkcd.com/comics/machine_learning.png "The pile gets soaked with data and starts to get mushy over time, so it's technically recurrent.")
