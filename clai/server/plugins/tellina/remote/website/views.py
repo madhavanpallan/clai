@@ -135,6 +135,7 @@ def translate(request, ip_address):
     # save the natural language request issued by this IP Address
     nl_request = NLRequest.objects.create(nl=nl, user=user)
 
+    start_time = time.time()
     if not trans_list:
         if not WEBSITE_DEVELOP:
             # call learning model and store the translations
@@ -176,15 +177,17 @@ def translate(request, ip_address):
                         trans.score = score
                         trans.save()
                     trans_list.append(trans)
-                    start_time = time.time()
+                    # start_time = time.time()
                     annotated_trans_list.append(tokens2html(pred_tree))
-                    print(time.time() - start_time)
+                    # print(time.time() - start_time)
                     # print('----score value----')
                     # print(score)
                     # print('----score value end----')
                     # print(top_k_predictions)
-                    start_time = time.time()
-
+    
+    diff_time = time.time() - start_time
+    print("Time taken for query execution")
+    print(diff_time)
     # scoring_function(top_k_predictions, top_k_scores)
     # print_model_step_scores(top_k_predictions, top_k_scores, layers_top_k_scores)
 
@@ -271,7 +274,8 @@ def translate_clai(request, ip_address):
 
     # save the natural language request issued by this IP Address
     # nl_request = NLRequest.objects.create(nl=nl, user=user)
-
+    
+    start_time = time.time()
     if not trans_list:
         if not WEBSITE_DEVELOP:
             # call learning model and store the translations
@@ -309,11 +313,15 @@ def translate_clai(request, ip_address):
                         trans.score = score
                         trans.save()
                     trans_list.append(trans)
-                    start_time = time.time()
+                    # start_time = time.time()
                     annotated_trans_list.append(tokens2html(pred_tree))
-                    print(time.time() - start_time)
-                    start_time = time.time()
-
+                    # print(time.time() - start_time)
+                    # start_time = time.time()
+    
+    diff_time = time.time() - start_time
+    print("Time taken for query execution")
+    print(diff_time)
+    
     tellina_top_response_cmd = top_k_predictions[0][1]
 
     # scoring_function(top_k_predictions, top_k_scores)
